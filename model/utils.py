@@ -16,7 +16,15 @@ import functools
 from model.data_preprocessing import match_aspect_ratio
 
 from requests.exceptions import HTTPError
-os.chdir(config.root_directory)
+
+# print("Root Directory:", config.root_directory)
+import os
+
+# Get and print the current working directory
+current_directory = os.getcwd()
+print("Current Working Directory:", current_directory)
+
+# os.chdir(config.root_directory)
 
 def get_ids():
     """
@@ -62,9 +70,11 @@ def validate_id(id):
     
 def acronymn_to_id(structures_ac):
     ac_to_id = get_ids()
+    print(ac_to_id)
 
     # list of structures
     if isinstance(structures_ac, list):
+        print("structure is list")
         id_list = []
 
         for acronym in structures_ac:
@@ -137,6 +147,7 @@ def atlas_registration(dir,ensemble=True,index_order=False,index_spacing=False,s
     model = DSModel('mouse')    
     if section_thickness: 
         model.predict(dir, ensemble, section_numbers=True)
+    print("dir",dir)
     model.predict(dir, ensemble, section_numbers=False)
     model.propagate_angles()
     

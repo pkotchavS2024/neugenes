@@ -1,0 +1,30 @@
+/* General list styles */
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+  }
+  
+  li {
+    margin: 5px 0;
+    text-align: left; /* Force text alignment to the left */
+  }
+  
+  /* Toggle button or clickable text */
+  .toggle {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    text-align: left; /* Align text to the left */
+    display: inline-block; /* Prevent centering inside container */
+  }
+  
+  /* Highlighted items */
+  .highlight {
+    background-color: yellow;
+  }
+  
+  /* Checkbox styles */
+  li input[type="checkbox"] {
+    margin-right: 5px; /* Add space between checkbox and text */
+  }
+  

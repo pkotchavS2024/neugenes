@@ -1,7 +1,7 @@
 import os
 
 # directories
-root = 'machine/root/directory'
+root = '/home/pk1756/neugenes'
 root_directory = os.path.join(root,'model')
 root_directory_new = root
 output_directory = os.path.join(root_directory,'model')
@@ -18,7 +18,7 @@ acronym_map = tree.value_map(lambda x: x['id'], lambda y: y['acronym'])
 name_map = tree.get_name_map() 
 
 # Brain atlas structure query 
-names_file_path = os.path.join(root,'model','mcc/names.txt')
+names_file_path = os.path.join(root,'model/mcc/names.txt')
 
 def id_to_name(id):
     return tree.get_structures_by_name([f'{name_map[id]}'])

@@ -1,0 +1,17 @@
+.page-container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Title header - Similar to Results Page */
+.big-title {
+  background: #5dade2; /* Light Blue */
+  color: white;
+  padding: 15px;
+  font-size: 26px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+

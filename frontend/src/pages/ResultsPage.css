@@ -1,0 +1,171 @@
+/* Header banner - Now matches HomePage */
+.header-banner {
+  background: #5dade2; /* Light Blue */
+  color: white;
+  padding: 1px;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top:10px
+}
+
+.results-container {
+  text-align: center;
+  padding: 20px;
+}
+
+
+/* Layout: Top half (images) and bottom half (histogram) */
+.top-half {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Image Pair with Closer Arrows */
+.image-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Reduced spacing */
+}
+
+.image-box {
+  text-align: center;
+  border: 2px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.image-box img {
+  width: 450px; /* Slightly smaller for spacing */
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Navigation Buttons - Placed Next to Images */
+.nav-button {
+  background: none;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  padding: 5px;
+  color: #007bff;
+  font-weight: bold;
+  position: relative;
+}
+
+.nav-button:hover {
+  color: #0056b3;
+}
+
+/* Move arrows closer to images */
+.left {
+  margin-right: 10px;
+}
+
+.right {
+  margin-left: 10px;
+}
+
+/* Hide buttons when disabled */
+.nav-button:disabled {
+  display: none;
+}
+
+/* Bottom Half: Histogram */
+.bottom-half {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.histogram-image {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+.loading-container {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .image-pair {
+    flex-direction: column;
+  }
+
+  .image-box img {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .histogram-image {
+    width: 90%;
+  }
+}
+
+
+
+.viewer-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.image-overlay-container {
+  position: relative;
+  display: inline-block;
+  max-width: 65%; /* Limit the width to leave space for structure list */
+  flex: 1 1 65%; /* Allow some flexibility but maintain proportion */
+}
+
+.background-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated; /* Optional: improves visibility at native scale */
+}
+
+.overlay-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.structure-list {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  flex: 1 1 25%; /* Give it a fixed proportion of the space */
+  min-width: 200px; /* Ensure it has enough width to be usable */
+  text-align: left; /* Align text to the left */
+}
+.structure-list h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.structure-list label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.nav-buttons {
+  margin-top: 1rem;
+}
