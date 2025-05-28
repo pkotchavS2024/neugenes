@@ -1,7 +1,7 @@
 import os
 
 # directories
-root = '/home/pk1756/neugenes'
+root = '/home/pk1756/my-neugenes/neugenes'
 root_directory = os.path.join(root,'model')
 root_directory_new = root
 output_directory = os.path.join(root_directory,'model')
