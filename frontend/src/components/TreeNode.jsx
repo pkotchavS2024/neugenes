@@ -30,7 +30,7 @@ const TreeNode = ({ node, onToggle, expandedNodes }) => {
       </span>
       {/* Render children if expanded */}
       {Array.isArray(node.children) && node.children.length > 0 && expanded && (
-        <ul>
+        <ul style={{ paddingLeft: "20px" }}>
           {node.children.map((child) => (
             <TreeNode
               key={child.id}

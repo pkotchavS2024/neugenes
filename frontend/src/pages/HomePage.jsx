@@ -5,6 +5,7 @@ import structureData from '../data/structures.json';
 import { buildTree } from '../helpers/treeUtils';
 import './HomePage.css';
 import axios from 'axios';
+import MouseExperimentForm from '../components/FolderImageUploadForm';
 
 const FULL_BRAIN = new Set([  'SSp-ll', 'SSp-tr', 'VISC', 'AUDpo', 'VISal', 'VISam', 'VISl', 'VISp', 'VISpl', 'VISpm', 
   'VISli', 'VISpor', 'ACAd', 'ACAv', 'PL', 'ILA', 'ORB', 'VISrl', 'TEa', 'AId', 'AIp', 'AIv', 
@@ -62,10 +63,14 @@ const HomePage = () => {
       <div className="title-container">
         <h1 className='big-title'>Brain Atlas Platform</h1>
 
-        {/* Left Panel */}
+        {/* New Image Upload Form */}
         <div className="left-panel">
-          <ImageUploadForm selectedAcronyms={selectedAcronyms} FULL_BRAIN={FULL_BRAIN}/>
+          <MouseExperimentForm selectedAcronyms={selectedAcronyms} FULL_BRAIN={FULL_BRAIN} />
         </div>
+        {/* Left Panel */}
+        {/* <div className="left-panel">
+          <ImageUploadForm selectedAcronyms={selectedAcronyms} FULL_BRAIN={FULL_BRAIN}/>
+        </div> */}
 
         {/* Right Panel */}
         <div className="right-panel">
