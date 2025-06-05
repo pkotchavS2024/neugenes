@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import CustomHeatMap as chm
+import matplotlib.pyplot as plt
 
 
 def read_csv_and_generate_dict(file_path):

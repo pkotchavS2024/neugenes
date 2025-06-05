@@ -287,9 +287,38 @@ def upload_mouse_experiment():
         all_successful = all(success for _, success in results)
         
         if all_successful:
-            return jsonify({
-                "message": "Mouse experiment uploaded and processed successfully"
-            }), 200
+            try:
+                # Generate heatmaps
+                structure_data = rp.read_all_csv_and_generate_dict(TEMP_DIR)
+
+                min_val = structure_data.pop("min_value")
+                max_val = structure_data.pop("max_value")
+
+                control_data = {}
+                stress_data = {}
+
+                for structure, data in structure_data.items():
+                    control_data[structure] = data["control_avg"]
+                    stress_data[structure] = data["stress_avg"]
+
+                control_data_dict = chm.create_mapped_nan_dict(control_data)
+                stress_data_dict = chm.create_mapped_nan_dict(stress_data)
+
+                cmap = chm.create_transparent_colormap("PuRd")
+
+                rp.plot_group_heatmaps(control_data_dict, min_val, max_val, "Control", "control_heatmap.png", cmap)
+                rp.plot_group_heatmaps(stress_data_dict, min_val, max_val, "Stress", "stress_heatmap.png", cmap)
+
+                return jsonify({
+                    "message": "Mouse experiment uploaded and processed successfully",
+                    "heatmaps_generated": True
+                }), 200
+            except Exception as e:
+                print(f"Error generating heatmaps: {str(e)}")
+                return jsonify({
+                    "message": "Mouse experiment processed but heatmap generation failed",
+                    "error": str(e)
+                }), 500
         else:
             failed_dirs = [dir for dir, success in results if not success]
             return jsonify({
