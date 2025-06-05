@@ -224,7 +224,7 @@ def upload_mouse_experiment():
         control_mice = int(request.form.get('controlMice', 0))
         stress_mice = int(request.form.get('stressMice', 0))
         structures = json.loads(request.form.get('structures', '[]'))
-        structures = ['AM', 'AD']
+        # structures = ['AM', 'AD']
         
         # Create base directories for control and stress mice
         control_dir = os.path.join(TEMP_DIR, 'control')
