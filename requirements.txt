@@ -1,9 +1,10 @@
 pandas
 opencv-python-headless
-numpy
+numpy==1.23.5
 Pillow
 scipy
 matplotlib
 DeepSlice
-allensdk
+allensdk==2.16.2
 ipywidgets
+numba==0.57.0

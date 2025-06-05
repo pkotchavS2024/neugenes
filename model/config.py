@@ -1,7 +1,14 @@
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # directories
-root = '/home/pk1756/my-neugenes/neugenes'
+# root = '/home/pk1756/my-neugenes/neugenes'
+root = os.getenv('ROOT_PATH')
+if root is None:
+    raise ValueError("ROOT_PATH not found in .env file. Please create a .env file with ROOT_PATH set.")
 root_directory = os.path.join(root,'model')
 root_directory_new = root
 output_directory = os.path.join(root_directory,'model')

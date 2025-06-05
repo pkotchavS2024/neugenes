@@ -12,6 +12,8 @@ import json
 import concurrent.futures
 from functools import partial
 import uuid
+import ResultProcessor as rp
+import CustomHeatMap as chm
 
 # Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -336,7 +338,27 @@ def upload_mouse_experiment():
         #     reader = csv.DictReader(f)
         #     for row in reader:
         #         csv_data.append(row)
-        
+
+        structure_data = rp.read_all_csv_and_generate_dict(TEMP_DIR)
+
+        min_val = structure_data.pop("min_value")
+        max_val = structure_data.pop("max_value")
+
+        control_data = {}
+        stress_data = {}
+
+        for structure, data in structure_data.items():
+            control_data[structure] = data["control_avg"]
+            stress_data[structure] = data["stress_avg"]
+
+        control_data_dict = chm.create_mapped_nan_dict(control_data)
+        stress_data_dict = chm.create_mapped_nan_dict(stress_data)
+
+        cmap = chm.create_transparent_colormap("PuRd")
+
+        rp.plot_group_heatmaps(control_data_dict, min_val, max_val, "Control", "control_heatmap.png", cmap)
+        rp.plot_group_heatmaps(stress_data_dict, min_val, max_val, "Stress", "stress_heatmap.png", cmap)
+
         return jsonify({
             "message": "Mouse experiment uploaded and processed successfully"
         }), 200
